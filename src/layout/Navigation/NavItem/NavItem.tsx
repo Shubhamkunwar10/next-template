@@ -1,6 +1,7 @@
 import React from "react";
 import { ListItemText, ListItem, ListItemButton, ListItemIcon } from "@mui/material";
 import Link from 'next/link'
+import { getColors } from "@/layout/Theme/themes";
  
 interface NavItemProps {
     item: {
@@ -20,7 +21,10 @@ const NavItem: React.FC<NavItemProps> = ({ item, isSidebarOpen,setShowOutlet }) 
     };
     return (
         <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-            <Link href={to}>
+            <Link href={to} style={{
+                textDecoration:"none",
+                fontWeight:"400px"
+            }}>
             <ListItemButton
                 onClick={handleClick}
                 sx={{
@@ -40,7 +44,10 @@ const NavItem: React.FC<NavItemProps> = ({ item, isSidebarOpen,setShowOutlet }) 
                         {icon}
                     </ListItemIcon>
                 )}
-                <ListItemText primary={text} sx={{ opacity: isSidebarOpen ? 1 : 0 }} />
+                <ListItemText primary={text} sx={{ 
+                    opacity: isSidebarOpen ? 1 : 0,
+                    color:getColors().grey[100],
+                    }} />
             </ListItemButton>
             </Link>
 

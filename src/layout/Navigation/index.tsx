@@ -1,85 +1,96 @@
-import * as React from "react";
-import { useTheme } from "@mui/material/styles";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import * as React from 'react';
+import { useTheme } from '@mui/material/styles';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
-import NavItem from "./NavItem/NavItem";
+import NavItem from './NavItem/NavItem';
 //css
-import { CustomDrawer, DrawerHeader } from "./style.css";
-import { Box, Button, SwipeableDrawer, Typography } from "@mui/material";
-import { Menu as MenuIcon } from "@mui/icons-material";
-import navConfig from "./navConfig";
+import { CustomDrawer, DrawerHeader } from './style.css';
+import { Box, SwipeableDrawer } from '@mui/material';
+import {
+    Menu as MenuIcon,
+  } from "@mui/icons-material";
 
-export interface NavbarProps {
-  isSidebarOpen: boolean;
-  setIsSidebarOpen: () => void;
-  setShowOutlet: (showOutlet: boolean) => void;
-  isNonMobile: boolean;
-  APP_BAR: string;
+export interface MiniDrawerProps {
+    isSidebarOpen: boolean;
+    setIsSidebarOpen: () => void;
+    setShowOutlet: (showOutlet: boolean) => void;
+    isNonMobile: boolean;
+    navConfig: {
+        text: string;
+        icon: React.ReactNode | null;
+        to: string;
+    }[];
+    APP_BAR:string
 }
 
-const Navbar: React.FC<NavbarProps> = ({
-  APP_BAR,
-  setIsSidebarOpen,
-  isNonMobile,
-  isSidebarOpen,
-  setShowOutlet,
-}) => {
-  const theme = useTheme();
 
-  return (
-    <>
-        {!isNonMobile ? (
+const MiniDrawer: React.FC<MiniDrawerProps> = ({ setIsSidebarOpen, isNonMobile, isSidebarOpen, navConfig, setShowOutlet, APP_BAR }) => {
+    const theme = useTheme();
 
-      <CustomDrawer
-        variant="permanent"
-        open={isSidebarOpen}
-      >
-        <DrawerHeader>
-          <IconButton onClick={() => setIsSidebarOpen()}>
-            <MenuIcon />
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
+    return (
+        <Box >
+            {isNonMobile ? (
+                <CustomDrawer variant="permanent" open={isSidebarOpen} theme={theme}  >
+                    <DrawerHeader >
+                    <IconButton onClick={() => setIsSidebarOpen()} >
+                            <MenuIcon />
+                        </IconButton>
+                    </DrawerHeader>
+                    <Divider />
 
-        <List>
-          {navConfig.map((item, index) => (
-            <NavItem
-              isNonMobile={isNonMobile}
-              item={item}
-              key={index}
-              isSidebarOpen={isSidebarOpen}
-              setShowOutlet={setShowOutlet}
-            />
-          ))}
-        </List>
-        <Divider />
-        {isSidebarOpen && (
-          <DrawerHeader>
-            <IconButton onClick={() => setIsSidebarOpen()}>
-              <ChevronLeftIcon />
-            </IconButton>
-          </DrawerHeader>
-        )}
-        <Divider />
-      </CustomDrawer>
-        ):(
-            <Box sx={{
-                zIndex:"500"
-            }}>
-                <Button>
-                    klhlk
-                </Button>
-                <Typography color={"red"}>
-                Header
+                    <List >
+                        {navConfig.map((item, index) => (
+                            <NavItem isNonMobile={isNonMobile} item={item} key={index} isSidebarOpen={isSidebarOpen} setShowOutlet={setShowOutlet} />
+                        ))}
+                    </List>
+                    <Divider />
+                    {isSidebarOpen &&
+                    <DrawerHeader>
+                        <IconButton onClick={() => setIsSidebarOpen()} >
+                            <ChevronLeftIcon />
+                        </IconButton>
+                    </DrawerHeader>
+                    }
+                    <Divider/>
+                </CustomDrawer>
+            ) : (
+                <SwipeableDrawer
+                        variant="persistent"
+                        open={isSidebarOpen} onClose={function (event: React.SyntheticEvent<{}, Event>): void {
+                            isSidebarOpen
+                            console.log(event);
+                            
+                        } } onOpen={function (event: React.SyntheticEvent<{}, Event>): void {
+                            isSidebarOpen
+                            console.log(event);
 
-                </Typography>
-                </Box>
-        )}
+                        } }                >
+                    <DrawerHeader>
+                    <IconButton onClick={() => setIsSidebarOpen()} >
+                            <MenuIcon />
+                        </IconButton>
+                    </DrawerHeader>
+                    <Divider />
+                    <List >
+                        {navConfig.map((item, index) => (
+                            <NavItem isNonMobile={isNonMobile} item={item} key={index} isSidebarOpen={isSidebarOpen} setShowOutlet={setShowOutlet} />
+                        ))}
+                    </List>
+                    <Divider />
+                    <DrawerHeader>
+                        <IconButton onClick={() => setIsSidebarOpen()} >
+                            <ChevronLeftIcon />
+                        </IconButton>
+                    </DrawerHeader>
+                    <Divider />
+                </SwipeableDrawer>
+            )}
+        </Box>
 
-    </>
-  );
-};
-export default Navbar;
+
+    );
+}
+export default MiniDrawer;

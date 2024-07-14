@@ -1,6 +1,7 @@
 import { styled,  Theme, CSSObject } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
+import { getColors } from '../Theme/themes';
 const drawerWidth = 240;
 
 export const openedMixin = (theme: Theme): CSSObject => ({
@@ -9,7 +10,6 @@ export const openedMixin = (theme: Theme): CSSObject => ({
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.enteringScreen,
     }),
-    backgroundColor:theme.palette.background.default,
     overflowX: 'hidden',
 });
 
@@ -18,7 +18,7 @@ export const closedMixin = (theme: Theme): CSSObject => ({
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
     }),
-    backgroundColor:theme.palette.background.default,
+
 
     zIndex:"4",
     overflowX: 'hidden',
