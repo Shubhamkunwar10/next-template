@@ -5,7 +5,7 @@ import { useState } from "react";
 
 import Navbar from "@/layout/Navigation";
 import Header from "@/layout/Header";
-import { Container, useMediaQuery } from "@mui/material";
+import { Box, Container, useMediaQuery } from "@mui/material";
 
 import { ColorModeContext, getColors, useMode } from "@/layout/Theme/themes";
 import { ThemeProvider } from "@emotion/react";
@@ -47,8 +47,13 @@ export default function RootLayout({
               setIsSidebarOpen={handleSideBarState}
             />
        
+              <Box sx={{
+                mt:APP_BAR,
+                ml:isNonMobile ? "64px" : 0 
+              }}>
 
             {children}
+              </Box>
             <Footer/>
           </ThemeProvider>
         </ColorModeContext.Provider>

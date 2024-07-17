@@ -30,7 +30,7 @@ export const tokens = (mode: string) => ({
             },
 
             primary: {
-                100: "#fffff", // very light shade of sky blue
+                100: "#fff", // very light shade of sky blue
                 200: "#00bfff", // deep sky blue
                 300: "#0099cc", // slightly darker shade of sky blue
                 400: "#007399", // a bit darker shade of sky blue
