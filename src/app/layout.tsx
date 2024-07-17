@@ -22,22 +22,27 @@ export default function RootLayout({
   const isNonMobile = useMediaQuery("(min-width: 766px)");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [showOutlet, setShowOutlet] = useState<boolean>(false);
-  const APP_BAR = "64px";
+  const APP_BAR = "58px";
+  const SIDE_BAR = "58px";
   const handleSideBarState = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
   return (
     <html lang="en">
-      <body className={inter.className} style={{
-        padding:0, margin:0
-      }}>
         <ColorModeContext.Provider value={colorMode}>
           <ThemeProvider theme={theme}>
+      <body className={inter.className} style={{
+        padding:0, margin:0,
+        background: getColors().grey[900],
+      }}>
+            <Box
+          >
+
             <Header
               isNonMobile={isNonMobile}
               APP_BAR={APP_BAR}
               setIsSidebarOpen={handleSideBarState}
-            />
+              />
             <Navbar
               navConfig={navConfig}
               APP_BAR={APP_BAR}
@@ -45,19 +50,16 @@ export default function RootLayout({
               isNonMobile={isNonMobile}
               isSidebarOpen={isSidebarOpen}
               setIsSidebarOpen={handleSideBarState}
-            />
+              />
        
-              <Box sx={{
-                mt:APP_BAR,
-                ml:isNonMobile ? "64px" : 0 
-              }}>
+
 
             {children}
-              </Box>
             <Footer/>
+                </Box>
+      </body>
           </ThemeProvider>
         </ColorModeContext.Provider>
-      </body>
     </html>
   );
 }

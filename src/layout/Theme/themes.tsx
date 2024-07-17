@@ -8,7 +8,7 @@ interface ExtendedTheme extends Theme {
         primary: Record<number, string>;
         secondary: Record<number, string>;
         greenAccent: Record<number, string>;
-        redAccent: Record<number, string>;
+        purpleAccent: Record<number, string>;
         blueAccent: Record<number, string>;
     };
 }
@@ -64,17 +64,17 @@ export const tokens = (mode: string) => ({
                 800: "#006600",
                 900: "#003300"
             },
-            redAccent: {
-                100: "#f8dcdb",
-                200: "#f1b9b7",
-                300: "#e99592",
-                400: "#e2726e",
-                500: "#FF0000",
-                600: "#af3f3b",
-                700: "#832f2c",
-                800: "#58201e",
-                900: "#2c100f",
-            },
+            purpleAccent: {
+                100: "#f3e5f5", // Lavender
+                200: "#e1bee7", // Light Purple
+                300: "#ce93d8", // Medium Purple
+                400: "#ba68c8", // Bright Purple
+                500: "#9c27b0", // Purple
+                600: "#8e24aa", // Darker Purple
+                700: "#7b1fa2", // Deep Purple
+                800: "#6a1b9a", // Very Dark Purple
+                900: "#4a148c", // Dark Purple
+            },                                   
             blueAccent: {
                 100: "#e1e2fe",
                 200: "#c3c6fd",
@@ -133,17 +133,17 @@ export const tokens = (mode: string) => ({
                 800: "#ad99d6",
                 900: "#ffffff",
             },
-            redAccent: {
-                100: "#2c100f",
-                200: "#58201e",
-                300: "#832f2c",
-                400: "#af3f3b",
-                500: "#FF0000",
-                600: "#e2726e",
-                700: "#e99592",
-                800: "#f1b9b7",
-                900: "#ffffff",
-            },
+            purpleAccent: {
+                100: "#4a148c", // Dark Purple
+                200: "#6a1b9a", // Very Dark Purple
+                300: "#7b1fa2", // Deep Purple
+                400: "#8e24aa", // Darker Purple
+                500: "#9c27b0", // Purple
+                600: "#ba68c8", // Bright Purple
+                700: "#ce93d8", // Medium Purple
+                800: "#e1bee7", // Light Purple
+                900: "#f3e5f5", // Lavender
+            },           
             blueAccent: {
                 100: "#151632",
                 200: "#2a2d64",
@@ -253,7 +253,7 @@ interface ColorModeContextType {
 export const ColorModeContext = createContext<ColorModeContextType | undefined>(undefined);
 
 export const useMode = (): [Theme, ColorModeContextType] => {
-    const [mode, setMode] = useState<PaletteMode>("dark");
+    const [mode, setMode] = useState<PaletteMode>("light");
 
     const colorMode = useMemo(
         () => ({

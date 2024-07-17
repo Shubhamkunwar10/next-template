@@ -20,7 +20,7 @@ import { motion } from "framer-motion";
 // const NAV_WIDTH = 280;
 import "./style.css"
 import Image from "next/image";
-
+import SocialList from "@/components/socials/socialList";
 interface HeaderProps {
   isNonMobile: boolean;
   setIsSidebarOpen: () => void;
@@ -42,14 +42,15 @@ const Header: React.FC<HeaderProps> = ({isNonMobile, setIsSidebarOpen, APP_BAR }
 
   return (
     <AppBar sx={{
-      backgroundColor: getColors().blueAccent[900],
+      backgroundColor: getColors().grey[900],
       height: APP_BAR
     }} >
       <Toolbar>
+        
         <IconButton
           onClick={() => setIsSidebarOpen()}
           sx={{
-            color: getColors().blueAccent[100]
+            color: getColors().blueAccent[100],
           }}
         >
           <MenuIcon />
@@ -60,10 +61,11 @@ const Header: React.FC<HeaderProps> = ({isNonMobile, setIsSidebarOpen, APP_BAR }
           }}>
 
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <Image src={`/logo.svg`} alt="logo" height={80} width={80} />
+          <Image src={`/favicon.svg`} alt="logo" height={40} width={40} />
         </Link>
 
         <Box sx={{ flexGrow: 1 }} />
+        <SocialList/>
         <Stack
           direction="row"
           alignItems="center"
