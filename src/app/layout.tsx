@@ -29,37 +29,44 @@ export default function RootLayout({
   };
   return (
     <html lang="en">
-        <ColorModeContext.Provider value={colorMode}>
-          <ThemeProvider theme={theme}>
-      <body className={inter.className} style={{
-        padding:0, margin:0,
-        background: getColors().grey[900],
-      }}>
-            <Box
+      <ColorModeContext.Provider value={colorMode}>
+        <ThemeProvider theme={theme}>
+          <body
+            className={inter.className}
+            style={{
+              padding: 0,
+              margin: 0,
+              background: getColors().grey[900],
+            }}
           >
-
-            <Header
-              isNonMobile={isNonMobile}
-              APP_BAR={APP_BAR}
-              setIsSidebarOpen={handleSideBarState}
+            <Box>
+              <Header
+                isNonMobile={isNonMobile}
+                APP_BAR={APP_BAR}
+                setIsSidebarOpen={handleSideBarState}
               />
-            <Navbar
-              navConfig={navConfig}
-              APP_BAR={APP_BAR}
-              setShowOutlet={setShowOutlet}
-              isNonMobile={isNonMobile}
-              isSidebarOpen={isSidebarOpen}
-              setIsSidebarOpen={handleSideBarState}
+              <Navbar
+                navConfig={navConfig}
+                APP_BAR={APP_BAR}
+                setShowOutlet={setShowOutlet}
+                isNonMobile={isNonMobile}
+                isSidebarOpen={isSidebarOpen}
+                setIsSidebarOpen={handleSideBarState}
               />
-       
 
-
-            {children}
-            <Footer/>
-                </Box>
-      </body>
-          </ThemeProvider>
-        </ColorModeContext.Provider>
+              <Box
+                sx={{
+                  background: theme.palette.background.default,
+                  minHeight: "100vh",
+                }}
+              >
+                {children}
+              <Footer />
+              </Box>
+            </Box>
+          </body>
+        </ThemeProvider>
+      </ColorModeContext.Provider>
     </html>
   );
 }

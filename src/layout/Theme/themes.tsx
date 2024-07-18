@@ -186,7 +186,7 @@ export const themeSettings = (mode: PaletteMode): ExtendedTheme => {
                             light: colors.grey[100],
                         },
                         background: {
-                            default: colors.primary[900],
+                            default: "#313131",
                         },
                     }
                     : {
@@ -207,7 +207,7 @@ export const themeSettings = (mode: PaletteMode): ExtendedTheme => {
                             light: colors.grey[100],
                         },
                         background: {
-                            default:  colors.primary[900],
+                            default:  "#EBF5F7",
                         },
                     }),
             },

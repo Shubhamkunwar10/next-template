@@ -12,6 +12,8 @@ import { Box, SwipeableDrawer } from '@mui/material';
 import {
     Menu as MenuIcon,
   } from "@mui/icons-material";
+import { getColors } from '../Theme/themes';
+import UserInfo from './Userinfo';
 
 export interface MiniDrawerProps {
     isSidebarOpen: boolean;
@@ -33,20 +35,29 @@ const MiniDrawer: React.FC<MiniDrawerProps> = ({ setIsSidebarOpen, isNonMobile, 
     return (
         <Box >
             {isNonMobile ? (
-                <CustomDrawer variant="permanent" open={isSidebarOpen} theme={theme}  >
-                    <DrawerHeader >
-                    <IconButton onClick={() => setIsSidebarOpen()} >
-                            <MenuIcon />
-                        </IconButton>
-                    </DrawerHeader>
-                    <Divider />
-
+                <CustomDrawer variant="permanent" open={isSidebarOpen} theme={theme}  PaperProps={{
+                    sx: {
+                      width: APP_BAR,
+                      // borderRightStyle: "dashed",
+                      backgroundColor:getColors().grey[900],
+                      backgroundSize: "cover",
+                      backgroundRepeat: "no-repeat",
+                      marginTop: "75px",
+                      marginLeft: 2,
+                      borderRadius: 4,
+                      height: "80%",
+                      paddingBottom:"40px"
+                    },
+                  }}  >
+                   
                     <List >
                         {navConfig.map((item, index) => (
                             <NavItem isNonMobile={isNonMobile} item={item} key={index} isSidebarOpen={isSidebarOpen} setShowOutlet={setShowOutlet} />
                         ))}
                     </List>
-                    <Divider />
+                    {isSidebarOpen && 
+                    <UserInfo isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen}/>
+                    }
                     {isSidebarOpen &&
                     <DrawerHeader>
                         <IconButton onClick={() => setIsSidebarOpen()} >
@@ -67,25 +78,36 @@ const MiniDrawer: React.FC<MiniDrawerProps> = ({ setIsSidebarOpen, isNonMobile, 
                             isSidebarOpen
                             console.log(event);
 
-                        } }                >
-                    <DrawerHeader>
-                    <IconButton onClick={() => setIsSidebarOpen()} >
-                            <MenuIcon />
-                        </IconButton>
-                    </DrawerHeader>
-                    <Divider />
+                        } } 
+                        PaperProps={{
+                            sx: {
+                              // borderRightStyle: "dashed",
+                              backgroundColor:getColors().grey[900],
+                              backgroundSize: "cover",
+                              backgroundRepeat: "no-repeat",
+                              marginTop: "75px",
+                              marginLeft: 2,
+                              borderRadius: 4,
+                              height: "80%",
+                              paddingBottom:"40px"
+                            },
+                          }}
+                        >
+
                     <List >
                         {navConfig.map((item, index) => (
                             <NavItem isNonMobile={isNonMobile} item={item} key={index} isSidebarOpen={isSidebarOpen} setShowOutlet={setShowOutlet} />
                         ))}
                     </List>
-                    <Divider />
+                    <UserInfo isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen}/>
+
                     <DrawerHeader>
                         <IconButton onClick={() => setIsSidebarOpen()} >
                             <ChevronLeftIcon />
                         </IconButton>
                     </DrawerHeader>
-                    <Divider />
+                    <Divider/>
+
                 </SwipeableDrawer>
             )}
         </Box>

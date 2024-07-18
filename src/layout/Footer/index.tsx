@@ -1,6 +1,7 @@
 import { Box, Link, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
+import { getColors } from "../Theme/themes";
 
 function Footer() {
   return (
@@ -9,17 +10,15 @@ function Footer() {
         alignItems: "flex-end",
         inset: "auto 0 0",
         height: "200px",
-        background:
-          "linear-gradient(to bottom,transparent 0%,rgb(var(--background-end-rgb)) 40% )",
-        zIndex: 1,
         display: "flex",
         justifyContent: "center",
-        position: "fixed",
-        width: "100%"
+        width: "100%",
       }}
     >
    
-        <Typography>
+        <Typography sx={{
+          color:getColors().grey[100]
+        }}>
 
         By{" "}
         </Typography>

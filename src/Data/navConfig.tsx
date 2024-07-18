@@ -1,4 +1,5 @@
 import {
+  HelpCenter,
   HomeOutlined,
   ShoppingCartOutlined,
 } from "@mui/icons-material";
@@ -20,6 +21,11 @@ export const navConfig = [
     icon: <ShoppingCartOutlined />,
     to: "/seiname",
   },
+  {
+    text: "Help Ticket",
+    icon: <HelpCenter />,
+    to: "/seiname",
+  }
 
 ];
 

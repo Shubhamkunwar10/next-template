@@ -1,4 +1,5 @@
 "use client";
+import MediaCard from "@/components/Cards/MediaCard";
 import SearchBar from "@/components/SearchBar";
 import TransferList from "@/components/TransferList";
 import { getColors } from "@/layout/Theme/themes";
@@ -11,23 +12,15 @@ export default function Home() {
   return (
     <Box
       sx={{
-        background: getColors().grey[900],
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: `100vh`,
+        pt: `20vh`,
         flexDirection: "column",
         gap: 10,
       }}
     >
-      <img
-        src="/click.gif"
-        alt="1CLIQ"
-        style={{
-          width: "100px",
-          height: "100px",
-        }}
-      />
+      
       <Box
         sx={{
           maxWidth: "60vw",
@@ -42,12 +35,12 @@ export default function Home() {
               .typeString(`<h2 style="color: grey;">A simple yet powerful</h2>`)
               .pauseFor(300)
               .typeString(
-                "<strong><span style='color: red;'>native web3 plugin</span></strong>"
+                "<strong><span style='color: red;'>Native web3 plugin</span></strong>"
               )
               .pauseFor(300)
               .deleteChars(18)
               .typeString(
-                '<strong><span style="color: #27ae60;">web3 name to hop into different chains.</span> </strong>'
+                '<strong><span style="color: #27ae60;">Web3 ENS to hop into different chains.</span> </strong>'
               )
               .pauseFor(1000)
               .start()
@@ -63,6 +56,33 @@ export default function Home() {
       </Box>
 
       <SearchBar />
+      <img
+        src="/click.gif"
+        alt="1CLIQ"
+        style={{
+          width: "100px",
+          height: "100px",
+        }}
+        />
+        <Typography variant="h4"  sx={{
+          color:getColors().purpleAccent[500]
+        }}>
+          Listen Our PodCasts
+        </Typography>
+        <Box sx={{
+          display:"flex",
+          gap:4
+        }}>
+          <MediaCard/>
+          <MediaCard/>
+        </Box>
+        <Box sx={{
+          display:"flex",
+          gap:4
+        }}>
+          <MediaCard/>
+          <MediaCard/>
+        </Box>
     </Box>
   );
 }

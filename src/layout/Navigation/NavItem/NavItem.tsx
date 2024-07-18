@@ -1,5 +1,5 @@
 import React from "react";
-import { ListItemText, ListItem, ListItemButton, ListItemIcon } from "@mui/material";
+import { ListItemText, ListItem, ListItemButton, ListItemIcon, Divider } from "@mui/material";
 import Link from 'next/link'
 import { getColors } from "@/layout/Theme/themes";
  
@@ -25,6 +25,9 @@ const NavItem: React.FC<NavItemProps> = ({ item, isSidebarOpen,setShowOutlet }) 
                 textDecoration:"none",
                 fontWeight:"400px"
             }}>
+                  {!icon && 
+                <Divider/>
+            }
             <ListItemButton
                 onClick={handleClick}
                 sx={{
@@ -33,22 +36,38 @@ const NavItem: React.FC<NavItemProps> = ({ item, isSidebarOpen,setShowOutlet }) 
                     px: 2.5,
                 }}
             >
-                {icon && (
+                {icon ? (
                     <ListItemIcon
                         sx={{
                             minWidth: 0,
                             mr: isSidebarOpen ? 3 : 'auto',
                             justifyContent: 'center',
                         }}
-                    >
+                        >
                         {icon}
                     </ListItemIcon>
+                ):(
+                    <ListItemIcon
+                    sx={{
+                        minWidth: 0,
+                        mr: isSidebarOpen ? 3 : 'auto',
+                        justifyContent: 'center',
+                    }}
+                    >
+                    {text}
+                </ListItemIcon> 
                 )}
+                {icon &&
+
                 <ListItemText primary={text} sx={{ 
                     opacity: isSidebarOpen ? 1 : 0,
                     color:getColors().grey[100],
-                    }} />
+                }} />
+            }
             </ListItemButton>
+            {!icon && 
+                <Divider/>
+            }
             </Link>
 
         </ListItem>
