@@ -1,11 +1,13 @@
 "use client";
+import BgcardHome from "@/components/Cards/BgcardHome";
 import MediaCard from "@/components/Cards/MediaCard";
+import Circle from "@/components/Circle";
 import SearchBar from "@/components/SearchBar";
 import TransferList from "@/components/TransferList";
 import { getColors } from "@/layout/Theme/themes";
 import { Box, Container, Typography, useTheme } from "@mui/material";
 import Typewriter from "typewriter-effect";
-
+import "./global.css"
 export default function Home() {
   const theme = useTheme();
 
@@ -29,6 +31,7 @@ export default function Home() {
           textAlign:"center"
         }}
       >
+        <BgcardHome/>
         <Typewriter
           onInit={(typewriter) => {
             typewriter
@@ -64,6 +67,7 @@ export default function Home() {
           height: "100px",
         }}
         />
+        <Circle/>
         <Typography variant="h4"  sx={{
           color:getColors().purpleAccent[500]
         }}>
