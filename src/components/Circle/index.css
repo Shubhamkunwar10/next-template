@@ -1,0 +1,16 @@
+.circularmotion {
+  position: relative;
+  animation: rotate 14s linear reverse infinite;
+
+}
+.circularmotion::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+@keyframes rotate {
+  100% {
+    transform: rotate(-360deg);
+  }
+}

@@ -7,7 +7,9 @@ import TransferList from "@/components/TransferList";
 import { getColors } from "@/layout/Theme/themes";
 import { Box, Container, Typography, useTheme } from "@mui/material";
 import Typewriter from "typewriter-effect";
-import "./global.css"
+import "./global.css";
+import Heading1 from "@/components/TextEffect/Heading1";
+import SectionCard1 from "@/components/Cards/SectionCard1";
 export default function Home() {
   const theme = useTheme();
 
@@ -22,20 +24,19 @@ export default function Home() {
         gap: 10,
       }}
     >
-      
       <Box
         sx={{
-          maxWidth: "60vw",
-          display:"flex",
-          justifyContent:"center",
-          textAlign:"center"
+          display: "flex",
+          justifyContent: "center",
+          textAlign: "center",
+          mb:6
         }}
       >
-        <BgcardHome/>
+        {/* <BgcardHome /> */}
         <Typewriter
           onInit={(typewriter) => {
             typewriter
-              .typeString(`<h2 style="color: grey;">A simple yet powerful</h2>`)
+              .typeString(`<h1 style="color: grey;">A simple yet powerful</h1>`)
               .pauseFor(300)
               .typeString(
                 "<strong><span style='color: red;'>Native web3 plugin</span></strong>"
@@ -59,34 +60,42 @@ export default function Home() {
       </Box>
 
       <SearchBar />
-      <img
-        src="/click.gif"
-        alt="1CLIQ"
-        style={{
-          width: "100px",
-          height: "100px",
+      <Box sx={{
+        display:"flex",
+        flexDirection:{xs:"column", md:"row-reverse"},
+        justifyContent:{xs:"column", md:"space-between"},
+
+      }}>
+      <Heading1 />
+      <Circle />
+      </Box>
+      <SectionCard1/>
+      <Typography
+        variant="h4"
+        sx={{
+          color: getColors().purpleAccent[500],
         }}
-        />
-        <Circle/>
-        <Typography variant="h4"  sx={{
-          color:getColors().purpleAccent[500]
-        }}>
-          Listen Our PodCasts
-        </Typography>
-        <Box sx={{
-          display:"flex",
-          gap:4
-        }}>
-          <MediaCard/>
-          <MediaCard/>
-        </Box>
-        <Box sx={{
-          display:"flex",
-          gap:4
-        }}>
-          <MediaCard/>
-          <MediaCard/>
-        </Box>
+      >
+        Listen Our PodCasts
+      </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          gap: 4,
+        }}
+      >
+        <MediaCard />
+        <MediaCard />
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          gap: 4,
+        }}
+      >
+        <MediaCard />
+        <MediaCard />
+      </Box>
     </Box>
   );
 }

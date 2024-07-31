@@ -186,7 +186,7 @@ export const themeSettings = (mode: PaletteMode): ExtendedTheme => {
                             light: colors.grey[100],
                         },
                         background: {
-                            default: "#313131",
+                            default: "black",
                         },
                     }
                     : {
